@@ -33,7 +33,7 @@ class User
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", columnDefinition="enum('admin', 'manager', 'salesman')")
+     * @ORM\Column(type="string", length=255)
      */
     private $userRole;
 
@@ -88,5 +88,11 @@ class User
         $this->userRole = $userRole;
 
         return $this;
+    }
+    /*public function __toString() {
+        return $this->somePropertyOrPlainString;
+    }*/
+    public function __toString(){
+        return $this->lastName;
     }
 }
