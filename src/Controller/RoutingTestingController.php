@@ -60,4 +60,24 @@ class RoutingTestingController extends AbstractController
     }
 
 
+
+
+    /**
+     * @Route("/redirect-test/{name}", name="redirect-test")
+     */
+    public function redirectTest(string $name)
+    {
+        //Example: /redirect-test/John
+        return $this->redirectToRoute('redirected-to', array('name' => $name));
+    }
+
+    /**
+     * @Route ("/redirected-to/{name?}", name="redirected-to")
+     */
+    public function redirectedTo(string $name)
+    {
+        return new Response('Hello ' . $name. '!');
+    }
+
+
 }
