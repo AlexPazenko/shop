@@ -2,31 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\Product;
+use App\Entity\Order;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class CreateProductFormType extends AbstractType
+class OrderFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('manufacturer')
-            ->add('price')
+            ->add('salesman')
+            ->add('paid')
             ->add('description')
-            ->add('quantity')
-            ->add('ucreated')
-            ->add('save', SubmitType::class, ['label' => 'Add new product'])
+            ->add('save', SubmitType::class, ['label' => 'Add new order'])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Product::class,
+            'data_class' => Order::class,
         ]);
     }
 }
